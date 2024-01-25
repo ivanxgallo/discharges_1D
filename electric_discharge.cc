@@ -163,7 +163,7 @@ int main()
 			pot[i]  = Potential(i,tempcharge);
 			electrico << scientific << setw(15) << setfill(' ') << elec[i] << endl;
 			potencial  << scientific << setw(15) << setfill(' ') << pot[i] << endl;
-			carga << tempcharge[i]  << endl;
+			carga << scientific << setw(15) << setfill(' ') << tempcharge[i]  << endl;
 		}
 		reset = contador;
 		contador = 0;
