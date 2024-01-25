@@ -36,8 +36,8 @@ double Energy(vector < double >);
 int main()
 {
 	randomize();
-	ofstream datos("output/datos.txt");
-	ofstream inf("output//pos_cant.txt");
+	ofstream datos("./datos.txt");
+	ofstream inf("./pos_cant.txt");
 	datos << num << " " << ite << endl;
 	datos.close();
 
@@ -53,13 +53,13 @@ int main()
 	charge = pot;
 	elec = pot;
 	//DATA WITH THE CHARGE
-	ofstream inicialcarga("output//initcarg_1D.txt");
+	ofstream inicialcarga("./initcarg_1D.txt");
 	//DATA WITH THE POTENTIAL
-	ofstream inicialpotencial("output//initpot_1D.txt");
+	ofstream inicialpotencial("./initpot_1D.txt");
 	//DATA WITH THE ELECTRIC FIELD
-	ofstream inicialelectric("output//initelec_1D.txt");
+	ofstream inicialelectric("./initelec_1D.txt");
 	//DATA WITH THE VARIATION OF MOBILE CHARGES BETWEEN DISCHARGES ( I'LL TAKE ONLY ~ 100 STEPS)
-	ofstream QM("output//corriente.txt", ios::app);
+	ofstream QM("./corriente.txt", ios::app);
 
    //INITIALIZING THE DISTRIBUTION OF THE INITIAL CHARGE DISTRIBUTION
 
@@ -96,7 +96,7 @@ int main()
 	inicialpotencial.close();
 	inicialcarga.close();
 
-	ofstream enerTot("output//enerTOT.txt", ios::app);
+	ofstream enerTot("./enerTOT.txt", ios::app);
 	enerTot <<  scientific << setw(15) << setfill(' ') << Energy(charge)  << endl;
 
    	// INITIALIZING THE PROCESS
@@ -173,13 +173,13 @@ int main()
 	charge = tempcharge;
 	//WRITING THE LOST CHARGE WHEN REACH THE EARTH
 	lostch = charge[0];
-	ofstream qper("output/qperdida.txt", ios::app);
+	ofstream qper("./qperdida.txt", ios::app);
 	qper <<  scientific << setw(15) << setfill(' ') <<  lostch << endl;
 	charge[0] = 0;
 	qper.close();
 
 	//TIME DURATION OF THE CHARGE
-	ofstream dur("output/duracion.txt", ios::app);
+	ofstream dur("./duracion.txt", ios::app);
 	dur << Time << endl;
 	dur.close();
 
@@ -195,7 +195,7 @@ int main()
 	*/
 	double fin = Energy(charge);
 	resta = ini - fin;
-	ofstream ener("output/deltaenergia.txt", ios::app);
+	ofstream ener("./deltaenergia.txt", ios::app);
 	ener <<  scientific << setw(15) << setfill(' ') << resta  << endl;
 	enerTot <<  scientific << setw(15) << setfill(' ') << fin  << endl;
 	ener.close();
@@ -288,6 +288,19 @@ double Energy(vector < double > prueba)
 }
 
 
+double Green(int y, int y0)
+{
+	if((y0 == y))
+	{
+		return 0;
+	}
+	else
+	{
+		return  1/sqrt((y-y0)*(y-y0)) - 1/sqrt((y+y0)*(y+y0));
+	}
+}
+
+
 /*
 double ElectricField(vector<double> prueba, int x, int y)
 {
@@ -308,18 +321,6 @@ double ElectricField(vector<double> prueba, int x, int y)
 	return value;
 }
 */
-
-double Green(int y, int y0)
-{
-	if((y0 == y))
-	{
-		return 0;
-	}
-	else
-	{
-		return  1/sqrt((y-y0)*(y-y0)) - 1/sqrt((y+y0)*(y+y0));
-	}
-}
 
 
 
