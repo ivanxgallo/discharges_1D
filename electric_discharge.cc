@@ -144,12 +144,12 @@ int main()
 		c << l;
 		string caele = "./output/CampoElectrico/elec_"+c.str()+".txt";
 
-	    // string car = "./Carga/carg_"+c.str()+".txt";
+		string car = "./Carga/carga_"+c.str()+".txt";
 	    //DATA WITH THE MOVING CHARGE
-	    //ofstream carga(car.c_str(), ios::app);
+		ofstream carga(car.c_str(), ios::app);
 
 	    //DATA WITH THE VARIATION OF POTENTIAL
-		ofstream potencial("./output/Potencial/pot_1D"+c.str()+".txt");
+		ofstream potencial("./output/Potencial/pot_"+c.str()+".txt");
 
 	     //DATA WITH THE VARIATION ELECTRIC FIELD
 		ofstream electrico(caele.c_str(), ios::app);
@@ -161,14 +161,14 @@ int main()
 		{
 			elec[i] = sqrt(Electricy(i, tempcharge)*Electricy(i, tempcharge));
 			pot[i]  = Potential(i,tempcharge);
-			electrico << scientific << setw(15) << setfill(' ') << elec[i]  << endl;
-		// potencial  << scientific << setw(15) << setfill(' ') << pot[i] <<  endl;
-        //carga << tempcharge[i]  << endl;
+			electrico << scientific << setw(15) << setfill(' ') << elec[i] << endl;
+			potencial  << scientific << setw(15) << setfill(' ') << pot[i] << endl;
+			carga << tempcharge[i]  << endl;
 		}
 		reset = contador;
 		contador = 0;
 		electrico.close();
-	    //carga.close();
+		carga.close();
 		}
 
 	QM << mobileQ << endl;
