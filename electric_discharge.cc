@@ -7,6 +7,8 @@
 #include <iomanip>
 #include "./azar.cc"
 
+
+// Poronguita
 using namespace std;
 
 double elec_crity = 4;
