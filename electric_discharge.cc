@@ -222,6 +222,73 @@ int gaussiana(int bla)
 	return azar1;
 }
 
+
+double Potential(int y, vector < double > prueba)
+{
+	int tempq = 0;
+	double value = 0.;
+	for(int i = 0; i < int(prueba.size()); i++ )
+	{
+		tempq = tempq + prueba[i];
+		value  = value + tempq*Green(y,i);
+		tempq = 0;
+	}
+	return value;
+}
+
+
+double Electricy(int y, vector < double > prueba)
+{
+	int tempq = 0;
+	double value = 0;
+	for(int i = 0; i < int(prueba.size()); i++)
+		{
+			tempq = tempq + prueba[i];
+			value = value + tempq*((i-y)*GreenN(i,y)*GreenN(i,y)*GreenN(i,y) - (i+y)*GreenP(i,y)*GreenP(i,y)*GreenP(i,y));
+			tempq = 0;
+		}
+	return value;
+}
+
+
+double GreenN(int y,int y0)
+{
+	if(y0 == y)
+	{
+		return 0;
+	}
+	else
+	{
+		return (1/(sqrt((y-y0)*(y-y0))));
+	}
+}
+
+
+double GreenP(int y,int y0)
+{
+	if(y0 == y)
+	{
+		return 0;
+	}
+	else
+	{
+		return (1/(sqrt((y+y0)*(y+y0))));
+	}
+}
+
+
+double Energy(vector < double > prueba)
+{
+	double value = 0;
+	for(int j = 0; j < int(prueba.size()); j++)
+	{
+		value = value + prueba[j]*Potential(j,prueba);
+	}
+	return value;
+}
+
+
+/*
 double ElectricField(vector<double> prueba, int x, int y)
 {
 	int tempq = 0;
@@ -242,33 +309,6 @@ double ElectricField(vector<double> prueba, int x, int y)
 }
 
 
-double Potential(int y, vector < double > prueba)
-{
-	int tempq = 0;
-	double value = 0.;
-	for(int i = 0; i < int(prueba.size()); i++ )
-	{
-		tempq = tempq + prueba[i];
-		value  = value + tempq*Green(y,i);
-		tempq = 0;
-	}
-	return value;
-}
-
-double Electricy(int y, vector < double > prueba)
-{
-	int tempq = 0;
-	double value = 0;
-	for(int i = 0; i < int(prueba.size()); i++)
-		{
-			tempq = tempq + prueba[i];
-			value = value + tempq*((i-y)*GreenN(i,y)*GreenN(i,y)*GreenN(i,y) - (i+y)*GreenP(i,y)*GreenP(i,y)*GreenP(i,y));
-			tempq = 0;
-		}
-	return value;
-}
-
-
 double Green(int y, int x, int x0, int y0)
 {
 	if((y0 == y) && (x0 == x))
@@ -280,40 +320,6 @@ double Green(int y, int x, int x0, int y0)
 		return ( 1/(sqrt( (x-x0)*(x-x0)  + (y-y0)*(y-y0) )  ) - 1/(sqrt(  (x-x0)*(x-x0) +    (y+y0)*(y+y0)   )  )    );
 	}
 }
+*/
 
-
-
-double GreenN(int y,int y0)
-{
-	if(y0 == y)
-	{
-		return 0;
-	}
-	else
-	{
-		return (1/(sqrt((y-y0)*(y-y0))));
-	}
-}
-
-double GreenP(int y,int y0)
-{
-	if(y0 == y)
-	{
-		return 0;
-	}
-	else
-	{
-		return (1/(sqrt((y+y0)*(y+y0))));
-	}
-}
-
-double Energy(vector < double > prueba)
-{
-	double value = 0;
-	for(int j = 0; j < int(prueba.size()); j++)
-	{
-		value = value + prueba[j]*Potential(j,prueba);
-	}
-	return value;
-}
 
