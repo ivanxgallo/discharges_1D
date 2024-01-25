@@ -144,7 +144,7 @@ int main()
 		c << l;
 		string caele = "./output/CampoElectrico/elec_"+c.str()+".txt";
 
-		string car = "./Carga/carga_"+c.str()+".txt";
+		string car = "./output/Carga/carga_"+c.str()+".txt";
 	    //DATA WITH THE MOVING CHARGE
 		ofstream carga(car.c_str(), ios::app);
 
