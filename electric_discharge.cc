@@ -7,15 +7,13 @@
 #include <iomanip>
 #include "./azar.cc"
 
-/* PORONGAAAAAAAAAAAAA */
 using namespace std;
-
 
 double elec_crity = 4;
 
 int num = 100;
 
-//double perchar = 0.5;
+double perchar = 0.5;
 int ite = 2;
 int bc = 0;
 int Time;
