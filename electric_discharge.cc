@@ -307,19 +307,19 @@ double ElectricField(vector<double> prueba, int x, int y)
 
 	return value;
 }
+*/
 
-
-double Green(int y, int x, int x0, int y0)
+double Green(int y, int y0)
 {
-	if((y0 == y) && (x0 == x))
+	if((y0 == y))
 	{
 		return 0;
 	}
 	else
 	{
-		return ( 1/(sqrt( (x-x0)*(x-x0)  + (y-y0)*(y-y0) )  ) - 1/(sqrt(  (x-x0)*(x-x0) +    (y+y0)*(y+y0)   )  )    );
+		return  1/sqrt((y-y0)*(y-y0)) - 1/sqrt((y+y0)*(y+y0));
 	}
 }
-*/
+
 
 
